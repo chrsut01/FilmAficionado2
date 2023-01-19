@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="programPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.filmaficionado2.Controller">
+   <children>
+      <VBox layoutX="1.0" layoutY="-1.0" prefHeight="652.0" prefWidth="903.0">
+         <children>
+            <HBox prefHeight="70.0" prefWidth="903.0">
+               <children>
+                  <AnchorPane prefHeight="138.0" prefWidth="295.0" />
+                  <AnchorPane prefHeight="68.0" prefWidth="320.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="6.0" text="Film Aficionado!">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="210.0" layoutY="10.0" prefHeight="163.0" prefWidth="286.0">
+                     <children>
+                        <Button layoutX="234.0" layoutY="13.0" mnemonicParsing="false" onAction="#closeProgram" prefHeight="27.0" prefWidth="41.0" text="close">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="563.0" prefWidth="903.0">
+               <children>
+                  <AnchorPane prefHeight="374.0" prefWidth="298.0">
+                     <children>
+                        <Button layoutX="45.0" layoutY="497.0" mnemonicParsing="false" onAction="#deleteMovie" text="delete" />
+                        <Button layoutX="7.0" layoutY="497.0" mnemonicParsing="false" onAction="#newMovie" text="add" />
+                        <TableView fx:id="movieTV" layoutX="7.0" layoutY="76.0" onMouseClicked="#unselectCatMovieLV" prefHeight="419.0" prefWidth="263.0">
+                          <columns>
+                            <TableColumn fx:id="myRating" prefWidth="43.19997978210449" text="rating" />
+                            <TableColumn fx:id="title" prefWidth="176.8000259399414" text="title" />
+                              <TableColumn fx:id="imdbRating" prefWidth="42.4000244140625" text="imdb " />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="10.0" layoutY="48.0" text="Movies">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="filterText" layoutX="68.0" layoutY="11.0" prefHeight="22.0" prefWidth="80.0" />
+                        <Button layoutX="150.0" layoutY="10.0" mnemonicParsing="false" onAction="#filterMovies" onMouseClicked="#filterMovies" text="filter" />
+                        <Button layoutX="230.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#refreshAfterFilter" prefHeight="26.0" prefWidth="37.0" text="refresh" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="167.0" layoutY="527.0" mnemonicParsing="false" onAction="#updateRating" prefHeight="26.0" prefWidth="103.0" text="update rating" />
+                        <Button layoutX="167.0" layoutY="498.0" mnemonicParsing="false" onAction="#addToCat" prefHeight="26.0" prefWidth="103.0" text="add to category" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="591.0" prefWidth="446.0">
+                     <children>
+                        <Button layoutX="120.0" layoutY="446.0" mnemonicParsing="false" onAction="#playMovie" prefHeight="27.0" prefWidth="80.0" text="play">
+                           <font>
+                              <Font size="23.0" />
+                           </font></Button>
+                        <Button layoutX="249.0" layoutY="447.0" mnemonicParsing="false" onAction="#stopMovie" prefHeight="50.0" prefWidth="71.0" text="stop">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                        <MediaView fx:id="mediaView" fitHeight="280.0" fitWidth="430.0" layoutX="-5.0" layoutY="152.0" />
+                        <Label layoutX="11.0" layoutY="107.0" prefHeight="27.0" prefWidth="103.0" text="Now Playing:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nowPlaying" layoutX="118.0" layoutY="105.0" prefHeight="22.0" prefWidth="304.0">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="563.0" prefWidth="173.0">
+                     <children>
+                        <ListView fx:id="categoryLV" layoutX="-1.0" layoutY="52.0" onMouseClicked="#showCatMovie" prefHeight="182.0" prefWidth="158.0" />
+                        <Button layoutY="236.0" mnemonicParsing="false" onAction="#newCategory" text="add" />
+                        <Button layoutX="106.0" layoutY="236.0" mnemonicParsing="false" onAction="#deleteCategory" text="delete" />
+                        <Label layoutX="1.0" layoutY="29.0" text="Categories">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="3.0" layoutY="330.0" text="Category/Movies">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="catMovieLV" layoutX="-1.0" layoutY="353.0" onMouseClicked="#unselectMovieTV" prefHeight="174.0" prefWidth="158.0" />
+                        <Button layoutX="-1.0" layoutY="528.0" mnemonicParsing="false" onAction="#removeFromCat" text="delete" />
+                        <Button layoutX="33.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#BestInCat" prefHeight="22.0" prefWidth="86.0" text="Best in Category">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Button>
+                        <Label fx:id="bestInCat" layoutX="35.0" layoutY="299.0" prefHeight="20.0" prefWidth="130.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
